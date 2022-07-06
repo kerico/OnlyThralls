@@ -107,7 +107,9 @@ a, .btn-link {
 .thrall-list-item:hover {
     transform: scale(1.01); /* (1% zoom) */
 }
-
+div.socials {
+    font-size: calc(1.3rem + .6vw) !important;
+}
 
 @media only screen and (max-width: 600px) {
     .thrall-list-item {
@@ -126,6 +128,9 @@ a, .btn-link {
         position:static;
     }
     .header-title {
-        padding-left: 25%;
+        text-align:center;
+    }
+    div.socials {
+        font-size:50px !important;
     }
 }
