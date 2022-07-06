@@ -97,7 +97,7 @@ a, .btn-link {
     content: "An error has occurred."
 }
 .thrall-list-item {
-
+    width: 75%;
 }
 .thrall-list-item .divider {
     height:10px;
@@ -109,3 +109,23 @@ a, .btn-link {
 }
 
 
+@media only screen and (max-width: 600px) {
+    .thrall-list-item {
+        width: 100%;
+        padding: 5px !important;
+    }
+    header .logo {
+        display:none;
+    }
+    header .filler {
+        display: none;
+    }
+    .text-header-logo {
+        font-size: 40px;
+        display: inline-block;
+        position:static;
+    }
+    .header-title {
+        padding-left: 25%;
+    }
+}
