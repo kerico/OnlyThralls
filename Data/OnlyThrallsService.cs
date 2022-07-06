@@ -2,7 +2,7 @@
 
 namespace OnlyThrals.Data
 {
-    public class OnlyThrallsService 
+    public class OnlyThrallsService
     {
         //private readonly OnlyThrallsContext _context;
 
@@ -10,11 +10,8 @@ namespace OnlyThrals.Data
         //{
         //    _context = context;
         //}
-
-        public async Task<Thrall[]> GetThrallsAsync()
+        public static List<Thrall> _thralls = new()
         {
-            return await Task.FromResult(new Thrall[]
-            {
                 new Thrall
                 {
                     ID = 0,
@@ -41,8 +38,22 @@ namespace OnlyThrals.Data
                     TwitterUserName = "jemalkiinlove",
                     Icon = "https://static-cdn.jtvnw.net/jtv_user_pictures/c982e0fe-c2f8-4090-b716-ec00537b2426-profile_image-70x70.png",
                     Description = "Hi I'm Jemal and I am the bass guitarist for Allusinlove. I go by many names The Sniper Lord, Shredder of Men, Cardinal of Funk, Blast Jockey, King of Snacks, Ol' Dusty, Friend.",
+                },
+                new Thrall
+                {
+                    ID = 3,
+                    Name = "Rachel",
+                    TwitchUserName = "rachelamy00",
+                    TwitterUserName = "RachelAmy00",
+                    Icon = "https://static-cdn.jtvnw.net/jtv_user_pictures/50f3d9ba-8be9-4e43-ab74-8c88e1fac31f-profile_image-70x70.png",
+                    Description = "Hey I'm Rachel! Welcome to my channel! ♡",
                 }
-            });
+            };
+        public async Task<List<Thrall>> GetThrallsAsync()
+        {
+            _thralls.Shuffle();
+
+            return await Task.FromResult(_thralls);
 
             //return _context.Thralls.ToArray();
         }

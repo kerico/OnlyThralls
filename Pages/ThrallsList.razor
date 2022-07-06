@@ -35,11 +35,12 @@ else
 }
 
 @code {
-    private Thrall[]? _thralls;
+    private List<Thrall>? _thralls;
 
     protected override async Task OnInitializedAsync()
     {
         _thralls = await _thrallService.GetThrallsAsync();
+        _thralls.Shuffle();
     }
 }
 
