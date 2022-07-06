@@ -1,0 +1,45 @@
+﻿@using OnlyThrals.Model;
+@using OnlyThrals.Data;
+@page "/"
+@inject OnlyThrallsService _thrallService;
+<PageTitle>Only Thralls</PageTitle>
+
+
+
+@if (_thralls != null && _thralls.Any())
+{
+    @foreach (var thrall in _thralls)
+    {
+        <div class="container w-75 p-3 thrall-list-item">
+
+            <div class="row">
+                <div class="col-md-auto"><img class="rounded-circle" src="@thrall.Icon"></div>
+                <div  class="col-9 fs-5">@thrall.Description</div>
+                <div class="col fs-3">
+                    <a href="https://www.twitch.tv/@thrall.TwitchUserName">
+                        <i class="bi bi-twitch"></i>
+                    </a>
+                    <a href="https://twitter.com/@thrall.TwitterUserName">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                </div>
+                <img class="divider" src="images/divider.svg">
+            </div>
+
+        </div>
+    }
+}
+else
+{
+    <h1>No thralls :(</h1>
+}
+
+@code {
+    private Thrall[]? _thralls;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _thralls = await _thrallService.GetThrallsAsync();
+    }
+}
+
