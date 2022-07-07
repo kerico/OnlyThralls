@@ -47,6 +47,15 @@ namespace OnlyThrals.Data
                     TwitterUserName = "RachelAmy00",
                     Icon = "https://static-cdn.jtvnw.net/jtv_user_pictures/50f3d9ba-8be9-4e43-ab74-8c88e1fac31f-profile_image-70x70.png",
                     Description = "Hey I'm Rachel! Welcome to my channel! ♡",
+                },
+                new Thrall
+                {
+                    ID = 4,
+                    Name = "Oprah",
+                    TwitchUserName = "oprahswetcave",
+                    TwitterUserName = "oprahswetcave",
+                    Icon = "https://static-cdn.jtvnw.net/jtv_user_pictures/916fac4e-d15f-4ef9-8502-b6228c5fa355-profile_image-70x70.png",
+                    Description = "OprahsWetCave streams Dread Hunger, Rust and Dead by Daylight.",
                 }
             };
         public async Task<List<Thrall>> GetThrallsAsync()
