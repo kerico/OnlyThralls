@@ -70,7 +70,17 @@ namespace OnlyThrals.Data
 
             return _thralls;
         }
+        public async Task<Thrall> GetThrallAsync(string thrallName)
+        {
+            var thrall = _thralls.FirstOrDefault(x => x.Name == thrallName);
+            if (thrall == null)
+                throw new Exception($"Thrall {thrallName} doesn't exist yet.");
+            var twitchClient = new TwitchClient(_configuration["TwitchClientId"], _configuration["TwitchClientSecret"]);
+            await thrall.EnsureDetailsAsync(twitchClient);
+            await thrall.CheckIfOnlineAsync(twitchClient);
 
+            return thrall;
+        }
         public static async Task UpdateThral(Thrall thrall)
         {
             await Task.FromResult(thrall.LastUpdated = DateTime.Now);

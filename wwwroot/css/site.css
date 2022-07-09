@@ -8,7 +8,9 @@ body {
     background-color: #000;
     color:#fff;
 }
-
+.thrall-detail-card {
+    background-color: #000;
+}
 .header-title {
     font-family: 'Trade Winds', cursive;
     position: relative;

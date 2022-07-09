@@ -1,0 +1,35 @@
+﻿@page "/{Name}"
+
+@using OnlyThrals.Model;
+@using OnlyThrals.Data;
+@inject OnlyThrallsService _thrallService;
+@using Microsoft.AspNetCore.Mvc
+
+@functions {
+    [ParameterAttribute]
+    public string? Name { get; set; }
+}
+
+
+
+<PageTitle>Only Thralls</PageTitle>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="@_thrall.Icon" alt="@Name profile picture">
+  <div class="card-body thrall-detail-card">
+    <h5 class="card-title">@_thrall.Name</h5>
+    <p class="card-text">@_thrall.Description</p>
+  </div>
+</div>
+<div class="container">
+</div>
+
+
+@code {
+    private Thrall _thrall;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _thrall = await _thrallService.GetThrallAsync(Name);
+    }
+}

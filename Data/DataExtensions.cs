@@ -8,6 +8,8 @@ namespace OnlyThrals.Data
     public static class DataExtensions
     {
         private static Dictionary<string, (bool isLive, DateTime nextCheck)> _liveThrallsCache = new Dictionary<string, (bool isLive, DateTime nextCheck)>();
+        public static async Task EnsureDetailsAsync(this Thrall thrall, TwitchClient twitchClient) =>
+            await new List<Thrall> { thrall }.EnsureDetailsAsync(twitchClient);
         public static async Task EnsureDetailsAsync(this IEnumerable<Thrall> thralls, TwitchClient twitchClient)
         {
             var logins = thralls.Where(x => !x.LastUpdated.HasValue || (x.LastUpdated.HasValue && x.LastUpdated > DateTime.Now.AddMinutes(60))).Select(x => x.TwitchUserName ?? "");
@@ -35,6 +37,8 @@ namespace OnlyThrals.Data
             await OnlyThrallsService.UpdateThral(thrall);
         }
 
+        public static async Task CheckIfOnlineAsync(this Thrall thrall, TwitchClient twitchClient) =>
+            await new List<Thrall> { thrall }.CheckIfOnlineAsync(twitchClient);
         public static async Task CheckIfOnlineAsync(this IEnumerable<Thrall> thralls, TwitchClient twitchClient)
         {
             var logins = thralls.Select(x => x.TwitchUserName ?? "");
