@@ -10,5 +10,7 @@ namespace OnlyThrals.Model
         public string? TwitchUserName { get; set; }
         public string? TwitterUserName { get; set; }
         public string? Description { get; set; }
+        public bool? IsLive { get; set; }
+        public DateTime? LastUpdated { get; set; }
     }
 }

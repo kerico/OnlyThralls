@@ -23,4 +23,8 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TwitchIntegration\TwitchIntegration.csproj" />
+  </ItemGroup>
+
 </Project>

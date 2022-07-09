@@ -16,11 +16,11 @@ body {
 }
 
 .left {
-    left: 1px;
+    left: -10px;
 }
 
 .right {
-    right: 1px;
+    right: -10px;
 }
 
 .text-header-logo {
@@ -30,7 +30,7 @@ body {
 }
 
 img.logo {
-    margin-left: 13%;
+    margin-left: 12%;
     width: 60%;
 }
 
@@ -102,6 +102,7 @@ a, .btn-link {
 .thrall-list-item .divider {
     height:10px;
     object-fit:cover;
+    width: 100%
 }
 
 .thrall-list-item:hover {
@@ -109,6 +110,11 @@ a, .btn-link {
 }
 div.socials {
     font-size: calc(1.3rem + .6vw) !important;
+}
+
+img.thrall-icon {
+    width: 75px;
+    height: 75px;
 }
 
 @media only screen and (max-width: 600px) {

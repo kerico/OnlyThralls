@@ -13,18 +13,34 @@
         <div class="container p-3 thrall-list-item">
 
             <div class="row">
-                <div class="col-md-auto"><img class="rounded-circle" src="@thrall.Icon"></div>
-                <div  class="col-9 fs-5">@thrall.Description</div>
+                <div class="col-md-auto">
+                    <img class="rounded-circle thrall-icon" src="@thrall.Icon">
+                    @if (thrall.IsLive.HasValue && thrall.IsLive.Value)
+                    {
+                        <a href="https://www.twitch.tv/@thrall.TwitchUserName" class="badge badge-success">Live</a>
+                    }
+                    else
+                    {
+                        <a href="https://www.twitch.tv/@thrall.TwitchUserName" class="badge badge-pill badge-secondary align-bottom">Offline</a>
+                        @*<span class="badge badge-pill badge-secondary align-bottom">Secondary</span>*@
+                        @*<a href="https://www.twitch.tv/@thrall.TwitchUserName" class="badge badge-secondary">Offline</a>*@
+                    }
+                </div>
+                <div class="col-9 fs-5">@thrall.Description</div>
                 <div class="col socials">
                     <a href="https://www.twitch.tv/@thrall.TwitchUserName">
                         <i class="bi bi-twitch"></i>
                     </a>
-                    <a href="https://twitter.com/@thrall.TwitterUserName">
-                        <i class="bi bi-twitter"></i>
-                    </a>
+                    @if (!string.IsNullOrWhiteSpace(thrall.TwitterUserName))
+                    {
+                        <a href="https://twitter.com/@thrall.TwitterUserName">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                    }
                 </div>
                 <img class="divider" src="images/divider.svg">
             </div>
+
 
         </div>
     }
@@ -40,7 +56,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         _thralls = await _thrallService.GetThrallsAsync();
-        _thralls.Shuffle();
     }
 }
 

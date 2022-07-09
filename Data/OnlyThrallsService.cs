@@ -1,15 +1,12 @@
-﻿using OnlyThrals.Model;
+﻿using Microsoft.AspNetCore.Components;
+using OnlyThrals.Model;
+using TwitchIntegration;
 
 namespace OnlyThrals.Data
 {
     public class OnlyThrallsService
     {
-        //private readonly OnlyThrallsContext _context;
-
-        //public OnlyThrallsService(OnlyThrallsContext context)
-        //{
-        //    _context = context;
-        //}
+        private IConfiguration _configuration;
         public static List<Thrall> _thralls = new()
         {
                 new Thrall
@@ -58,13 +55,26 @@ namespace OnlyThrals.Data
                     Description = "OprahsWetCave streams Dread Hunger, Rust and Dead by Daylight.",
                 }
             };
+
+        public OnlyThrallsService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public async Task<List<Thrall>> GetThrallsAsync()
         {
             _thralls.Shuffle();
 
-            return await Task.FromResult(_thralls);
+            var twitchClient = new TwitchClient(_configuration["TwitchClientId"], _configuration["TwitchClientSecret"]);
+            await _thralls.EnsureDetailsAsync(twitchClient);
+            await _thralls.CheckIfOnlineAsync(twitchClient);
 
-            //return _context.Thralls.ToArray();
+            return _thralls;
+        }
+
+        public static async Task UpdateThral(Thrall thrall)
+        {
+            await Task.FromResult(thrall.LastUpdated = DateTime.Now);
+            //_thralls[thrall.ID] = thrall;
         }
     }
 }
