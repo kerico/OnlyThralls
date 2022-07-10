@@ -1,6 +1,6 @@
 ﻿@using OnlyThrals.Model;
 @using OnlyThrals.Data;
-@page "/thralls"
+@page "/"
 @inject OnlyThrallsService _thrallService;
 <PageTitle>Only Thralls</PageTitle>
 
@@ -55,7 +55,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        _thralls = await _thrallService.GetThrallsAsync();
+        _thralls = await _thrallService.GetThrallsForHomePageAsync();
     }
 }
 

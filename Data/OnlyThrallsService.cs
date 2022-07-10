@@ -60,15 +60,29 @@ namespace OnlyThrals.Data
         {
             _configuration = configuration;
         }
+        public async Task<List<Thrall>> GetThrallsForHomePageAsync()
+        {
+            _ = await GetThrallsAsync();
+
+            var result = _thralls.Where(x => x.IsLive ?? false);
+
+            if (result.Count() < 5)
+            {
+                var offlineThralls = _thralls.Where(x => !(x.IsLive ?? false)).Take(5 - result.Count());
+                result = result.Union(offlineThralls);
+            }
+
+            return result.ToList();
+        }
         public async Task<List<Thrall>> GetThrallsAsync()
         {
             _thralls.Shuffle();
-
             var twitchClient = new TwitchClient(_configuration["TwitchClientId"], _configuration["TwitchClientSecret"]);
+
             await _thralls.EnsureDetailsAsync(twitchClient);
             await _thralls.CheckIfOnlineAsync(twitchClient);
-
             return _thralls;
+
         }
 
         public static async Task UpdateThral(Thrall thrall)

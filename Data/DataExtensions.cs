@@ -50,7 +50,15 @@ namespace OnlyThrals.Data
                 var thrall = thralls.First(x => x.TwitchUserName?.ToLower() == streamInfo.UserLogin);
                 thrall.IsLive = true;
                 if (!string.IsNullOrWhiteSpace(thrall.TwitchUserName))
+                {
+                    if (_liveThrallsCache.ContainsKey(thrall.TwitchUserName ?? throw new Exception("bad login")))
+                    {
+                        _liveThrallsCache[thrall.TwitchUserName] = new(true, DateTime.Now.AddMinutes(30));
+                        continue;
+                    }
+
                     _liveThrallsCache.Add(thrall.TwitchUserName, new(true, DateTime.Now.AddMinutes(30)));
+                }
             }
 
             var offlineThralls = thralls.Where(x => !streams.Any(y => y.UserLogin == x.TwitchUserName));
