@@ -53,6 +53,15 @@ namespace OnlyThrals.Data
                     TwitterUserName = "oprahswetcave",
                     Icon = "https://static-cdn.jtvnw.net/jtv_user_pictures/916fac4e-d15f-4ef9-8502-b6228c5fa355-profile_image-70x70.png",
                     Description = "OprahsWetCave streams Dread Hunger, Rust and Dead by Daylight.",
+                },
+                new Thrall
+                {
+                    ID = 5,
+                    Name = "Pedguin",
+                    TwitchUserName = "pedguin",
+                    TwitterUserName = "pedguin",
+                    Icon = "https://static-cdn.jtvnw.net/jtv_user_pictures/4098d6f6-18c0-42fe-ac65-d231a5ffaaa6-profile_image-70x70.png",
+                    Description = "I love you",
                 }
             };
 
