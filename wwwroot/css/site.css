@@ -179,4 +179,9 @@ a.active {
         font-size: 50px !important;
         padding: 0px;
     }
+    .col-sm-2 {
+        padding: 0px;
+        max-width: 100%;
+        flex: 0 0 auto;
+    }
 }
