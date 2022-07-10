@@ -116,6 +116,7 @@ a, .btn-link {
 
 div.socials {
     font-size: calc(1.3rem + .6vw) !important;
+    padding-left: 5px;
 }
 
 img.thrall-icon {
@@ -133,7 +134,11 @@ img.thrall-icon {
 .nav-tabs {
     border: none;
 }
-
+.col-sm-2 {
+    padding: 0px;
+    max-width: 16%;
+    flex: 0 0 15%;
+}
 a.nav-link {
     color: #fff;
     text-decoration: none;
@@ -172,5 +177,6 @@ a.active {
 
     div.socials {
         font-size: 50px !important;
+        padding: 0px;
     }
 }
