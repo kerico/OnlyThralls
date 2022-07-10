@@ -6,7 +6,7 @@ html, body {
 
 body {
     background-color: #000;
-    color:#fff;
+    color: #fff;
 }
 
 .header-title {
@@ -63,7 +63,9 @@ a, .btn-link {
 .validation-message {
     color: red;
 }
-
+.bg-black{
+    background-color:#000;
+}
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
@@ -89,25 +91,29 @@ a, .btn-link {
     color: white;
 }
 
-.bi-twitch{
-    width:16px;
-    height:16px;
+.bi-twitch {
+    width: 16px;
+    height: 16px;
 }
+
 .blazor-error-boundary::after {
     content: "An error has occurred."
 }
+
 .thrall-list-item {
-    width: 75%;
-}
-.thrall-list-item .divider {
-    height:10px;
-    object-fit:cover;
-    width: 100%
+    margin-top: 2%;
 }
 
-.thrall-list-item:hover {
-    transform: scale(1.01); /* (1% zoom) */
-}
+    .thrall-list-item .divider {
+        height: 10px;
+        object-fit: cover;
+        width: 100%
+    }
+
+    .thrall-list-item:hover {
+        transform: scale(1.01); /* (1% zoom) */
+    }
+
 div.socials {
     font-size: calc(1.3rem + .6vw) !important;
 }
@@ -116,27 +122,55 @@ img.thrall-icon {
     width: 75px;
     height: 75px;
 }
+.nav-item{
+    background-color: #000;
+}
+.nav-item :hover {
+    border: none !important;
+    background-color: #212020 !important;
+}
+
+.nav-tabs {
+    border-color: #750000;
+}
+
+a.nav-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+a.active {
+    color: #fff !important;
+    background-color: #151515 !important;
+    border: none !important;
+}
+
 
 @media only screen and (max-width: 600px) {
     .thrall-list-item {
-        width: 100%;
         padding: 5px !important;
+        margin-top: 2%;
     }
+
     header .logo {
-        display:none;
+        display: none;
     }
+
     header .filler {
         display: none;
     }
+
     .text-header-logo {
         font-size: 40px;
         display: inline-block;
-        position:static;
+        position: static;
     }
+
     .header-title {
-        text-align:center;
+        text-align: center;
     }
+
     div.socials {
-        font-size:50px !important;
+        font-size: 50px !important;
     }
 }

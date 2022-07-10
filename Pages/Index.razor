@@ -6,13 +6,28 @@
 
 
 
-@if (_thralls != null && _thralls.Any())
-{
-    @foreach (var thrall in _thralls)
+<div class="container p-3">
+    <div class="row sticky-top">
+        <div class="col bg-black">
+            <ul class="nav nav-tabs nav-fill ">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/thralls">Thralls</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Secret?</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    @if (_thralls != null && _thralls.Any())
     {
-        <div class="container p-3 thrall-list-item">
+        @foreach (var thrall in _thralls)
+        {
 
-            <div class="row">
+            <div class="row thrall-list-item">
                 <div class="col-sm-2">
                     <img class="rounded-circle thrall-icon" src="@thrall.Icon">
                     @if (thrall.IsLive.HasValue && thrall.IsLive.Value)
@@ -42,14 +57,14 @@
             </div>
 
 
-        </div>
+        }
     }
-}
-else
-{
-    <h1>No thralls :(</h1>
-}
+    else
+    {
+        <h1>No thralls :(</h1>
+    }
 
+</div>
 @code {
     private List<Thrall>? _thralls;
 

@@ -53,11 +53,11 @@ namespace OnlyThrals.Data
                 {
                     if (_liveThrallsCache.ContainsKey(thrall.TwitchUserName ?? throw new Exception("bad login")))
                     {
-                        _liveThrallsCache[thrall.TwitchUserName] = new(true, DateTime.Now.AddMinutes(30));
+                        _liveThrallsCache[thrall.TwitchUserName] = new(true, DateTime.Now.AddMinutes(5));
                         continue;
                     }
 
-                    _liveThrallsCache.Add(thrall.TwitchUserName, new(true, DateTime.Now.AddMinutes(30)));
+                    _liveThrallsCache.Add(thrall.TwitchUserName, new(true, DateTime.Now.AddMinutes(5)));
                 }
             }
 
@@ -68,11 +68,11 @@ namespace OnlyThrals.Data
                 thrall.IsLive = false;
                 if (_liveThrallsCache.ContainsKey(thrall.TwitchUserName?? throw new Exception("bad login")))
                 {
-                    _liveThrallsCache[thrall.TwitchUserName] = new(false, DateTime.Now.AddMinutes(30));
+                    _liveThrallsCache[thrall.TwitchUserName] = new(false, DateTime.Now.AddMinutes(5));
                     continue;
                 }
 
-                _liveThrallsCache.Add(thrall.TwitchUserName, new(false, DateTime.Now.AddMinutes(30)));
+                _liveThrallsCache.Add(thrall.TwitchUserName, new(false, DateTime.Now.AddMinutes(5)));
             }
         }
     }
