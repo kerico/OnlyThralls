@@ -2,6 +2,7 @@
 @using OnlyThrals.Data;
 @page "/thralls"
 @inject OnlyThrallsService _thrallService;
+@attribute [Authorize("admin")]
 <PageTitle>Only Thralls</PageTitle>
 <div class="container p-3">
     <div class="row bg-black sticky-top">

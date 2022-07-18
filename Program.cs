@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
+using OnlyThrals.Authentication;
 using OnlyThrals.Data;
 using TwitchIntegration;
 
@@ -11,7 +13,12 @@ var connectionString = builder.Configuration.GetConnectionString("OnlyThralls");
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-builder.Services.AddScoped<OnlyThrallsService>();
+builder.Services
+    .AddScoped<OnlyThrallsService>()
+    .AddScoped<ILoginService, LoginService>()
+    .AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>()
+    .AddAuthorization(options =>
+    options.AddPolicy("admin", a=> a.RequireAuthenticatedUser()) );
 
 //builder.Services.AddDbContext<OnlyThrallsContext>(options =>
 //        options

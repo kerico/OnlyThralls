@@ -1,6 +1,8 @@
 ﻿@page "/login"
+@using OnlyThrals.Authentication
+@using OnlyThrals.Data
 @inject NavigationManager NavigationManager
-
+@inject AuthenticationStateProvider AuthenticationStateProvider
 <div class="card">
     <h4 class="card-header">Login</h4>
     <label>@errorText</label>
@@ -39,9 +41,9 @@
         loading = true;
         try
         {
-            //await AccountService.Login(model);
+            await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(model.Username, model.Password);
 
-            var returnUrl = NavigationManager.QueryString("returnUrl") ?? string.Empty;
+            var returnUrl = NavigationManager.QueryString("returnUrl") ?? "/";
             NavigationManager.NavigateTo(returnUrl);
         }
         catch (Exception ex)
