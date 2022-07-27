@@ -28,7 +28,7 @@ namespace OnlyThrals
             }
             else
             {
-                base.Render(builder);
+                //base.Render(builder);
             }
         }
     }
